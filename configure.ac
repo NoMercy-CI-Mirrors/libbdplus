@@ -122,7 +122,8 @@ fi
 
 AC_PATH_PROG(LIBGCRYPT_CONFIG, libgcrypt-config, no)
 if test x"$LIBGCRYPT_CONFIG" = xno; then
-  AC_MSG_ERROR([libgcrypt not found on system])
+  PKG_CHECK_MODULES([LIBGCRYPT], [libgcrypt >= 1.1.94],
+    [], [AC_MSG_ERROR([libgcrypt not found on system])])
 else
   LIBGCRYPT_CFLAGS=`$LIBGCRYPT_CONFIG --cflags`
   LIBGCRYPT_LIBS=`$LIBGCRYPT_CONFIG --libs`
@@ -145,7 +146,8 @@ fi
 
 AC_PATH_PROG(GPG_ERROR_CONFIG, gpg-error-config, no)
 if test x"$GPG_ERROR_CONFIG" = xno; then
-  AC_MSG_ERROR([gpg-error not found on system])
+  PKG_CHECK_MODULES([GPG_ERROR], [gpg-error >= 0.5],
+    [], [AC_MSG_ERROR([gpg-error not found on system])])
 else
   GPG_ERROR_CFLAGS=`$GPG_ERROR_CONFIG --cflags`
   GPG_ERROR_LIBS=`$GPG_ERROR_CONFIG --libs`
