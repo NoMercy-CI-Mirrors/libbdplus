@@ -55,6 +55,7 @@ static uint8_t _hex_byte(char c)
 static void _libaacs_get_vid(uint8_t *vid, uint8_t *mk, const char *root)
 {
 #ifndef HAVE_LIBAACS
+    (void)vid; (void)mk; (void)root;
     fprintf(stderr, "libaacs support not enabled. Please provide VID in command line.\n");
     exit(1);
 #else
